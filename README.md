@@ -184,7 +184,7 @@ the two one-episode smoke evaluations (`evaluate.py --smoke --states 1`) before 
 ## Pretrained weights
 
 Weights and the small fixed inputs are published at
-<https://huggingface.co/Miraiyochi/future-latent-subgoals>:
+<https://huggingface.co/Miraiyochi/hierarchical-latent-subgoals>:
 
 | Path on the Hub | Contents |
 |---|---|
