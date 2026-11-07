@@ -93,8 +93,8 @@ checks its sha256. The PushT scripts also take a `--data-root` directory holding
 inputs: `split_ids.json` (train/validation/test episode split), `evaluation_tasks.jsonl` (the
 in-range start/goal pairs, 50 per distance and seed), `normalizers.npz` (image and action
 statistics) and `s2_normalizer.npz` (per-component statistics of the frozen encoder's latents over
-the training frames, written by `stage_g0.py`). These files are distributed together with the
-pretrained weights (see below).
+the training frames, written by `stage_g0.py`). These files are on the Hugging Face Hub under
+`pusht_data/` (see "Pretrained weights" below).
 
 ### Gates before training
 
@@ -186,13 +186,22 @@ the two one-episode smoke evaluations (`evaluate.py --smoke --states 1`) before 
 Weights and the small fixed inputs are published at
 <https://huggingface.co/Miraiyochi/future-latent-subgoals>:
 
-| File | Experiment |
+| Path on the Hub | Contents |
 |---|---|
-| `pusht/seed_{42,43,44}/hierarchical_ema.pt` | PushT main, hierarchical policy, 30k updates, EMA |
-| `pusht/seed_{42,43,44}/flat_direct_goal_ema.pt` | PushT main, parameter-matched flat policy |
-| `pusht/data/{split_ids.json, evaluation_tasks.jsonl, normalizers.npz, s2_normalizer.npz, evaluation_tasks_extended.jsonl, evaluation_tasks_d200.jsonl}` | fixed inputs for `--data-root` and the beyond-range tasks |
-| `pusht_train150/{hierarchical,flat_direct_goal}_ema.pt` | range extension (seed 42) |
-| `libero_long/{hierarchical,flat}_ema_030000.pt` | LIBERO-Long (seed 42) |
+| `pusht_main_reproduction/seed_42/{hierarchical,flat_direct_goal}_ema.pt` | PushT main setting (training d in {25, 50, 75}), 30k updates, final EMA; seed-42 rerun, see the note below |
+| `pusht_train150/seed_42/{hierarchical,flat_direct_goal}_ema.pt` | PushT range extension (training d in {25, 50, 75, 100, 150}), seed 42; the weights reported in the paper |
+| `pusht_data/{split_ids.json, evaluation_tasks.jsonl, normalizers.npz, s2_normalizer.npz, evaluation_tasks_extended.jsonl, evaluation_tasks_d200.jsonl}` | fixed inputs for `--data-root` (first four) and the beyond-range tasks (`H3X_OUT/data/`) |
+| `libero_long/{hierarchical,flat}/ema_030000.pt` | LIBERO-Long, seed 42, 30k updates; the weights reported in the paper |
+
+Each folder has a `SHA256SUMS` file.
+
+**Note on the PushT main-setting weights.** The paper's main PushT result averages three training
+seeds (42, 43, 44). Those six checkpoints were stored on machines without persistent storage and
+were not kept. `pusht_main_reproduction` contains a later rerun of seed 42 with the same code,
+inputs and settings. Its hierarchical-minus-flat gaps beyond the training range point the same way
+as the paper's (+24 points at d = 100 and +26 at d = 150, against +14 and +14 for the original
+seed 42), but the numbers are not identical. To reproduce the three-seed table, train seeds 42-44
+with the commands above.
 
 ## Paper
 
