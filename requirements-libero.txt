@@ -1,0 +1,17 @@
+# Versions used for the LIBERO-Long runs (Python 3.11, CUDA). torch/torchvision came from the
+# base image (torch 2.9.1 / torchvision 0.24.1 recorded in the run logs).
+transformers==4.57.1
+h5py==3.14.0
+sentencepiece==0.2.1
+protobuf==6.32.1
+numpy==1.26.4
+mujoco==2.3.7
+robosuite==1.4.0
+bddl==1.0.1
+gym==0.25.2
+easydict==1.9
+PyYAML==6.0.2
+opencv-python==4.10.0.84
+termcolor==2.4.0
+matplotlib==3.10.6
+future==1.0.0

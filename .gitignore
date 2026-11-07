@@ -1,0 +1,16 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+venv/
+data/
+results/
+third_party/
+weights/
+*.pt
+*.ckpt
+*.h5
+*.h5.zst
+*.hdf5
+*.npz
+*.log

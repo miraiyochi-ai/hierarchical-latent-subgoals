@@ -1,0 +1,11 @@
+# Versions used for the PushT runs (Python 3.10, CUDA H100). Installed with uv.
+stable-worldmodel[train,env] @ git+https://github.com/galilai-group/stable-worldmodel.git@15a5538d492ae524c64cb18cc56a2d70611e877e
+stable-pretraining==0.1.8
+torch==2.13.0
+torchvision==0.28.0
+transformers==5.4.0
+numpy==2.2.6
+pyyaml==6.0.3
+hdf5plugin==7.0.0
+swig==4.4.1
+pytest==8.4.1
