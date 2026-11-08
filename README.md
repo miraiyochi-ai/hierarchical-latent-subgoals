@@ -4,6 +4,8 @@ Code for the UniReps 2026 workshop extended abstract
 **"Predicted Future Latents as Subgoals: Hierarchical Policies Outperform Flat Policies Beyond the Training Goal Distance"**
 (Takahiro Morimoto, Miraiyochi, inc.).
 
+**Paper (PDF):** [paper/predicted_future_latents_as_subgoals.pdf](paper/predicted_future_latents_as_subgoals.pdf) · **Weights:** [Hugging Face](https://huggingface.co/Miraiyochi/hierarchical-latent-subgoals)
+
 A goal-conditioned imitation policy is split into two levels that run inside one network, with no
 test-time search. Every 16 environment steps the upper level generates, in the latent space of a
 frozen visual encoder, the latent of the observation it expects 16 steps ahead; the lower level takes
